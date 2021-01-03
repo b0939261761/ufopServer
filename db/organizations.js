@@ -11,10 +11,10 @@ export const getOrganization = async code => {
   return rows?.[0];
 };
 
-export const getLastCode = async () => {
-  const sql = 'SELECT code FROM "Organizations" WHERE "isNewUsrInfo" ORDER BY "createdAt" LIMIT 1';
+export const getLastOrganization = async () => {
+  const sql = 'SELECT code, activity, status FROM "Organizations" WHERE "isNewUsrInfo" ORDER BY "createdAt" LIMIT 1';
   const { rows } = await query(sql);
-  return rows?.[0]?.code;
+  return rows[0];
 };
 
 export const setIsNewUsrInfo = code => {
@@ -24,6 +24,6 @@ export const setIsNewUsrInfo = code => {
 
 export default {
   getOrganization,
-  getLastCode,
+  getLastOrganization,
   setIsNewUsrInfo
 };

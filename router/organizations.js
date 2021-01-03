@@ -1,12 +1,14 @@
-import { getLastCode, setIsNewUsrInfo, getOrganization } from '../db/index.js';
+import { getLastOrganization, setIsNewUsrInfo, getOrganization } from '../db/index.js';
 
-const getLastCodeRoute = {
-  url: '/organizations/lastUsrInfo',
+const getLastOrganizationRoute = {
+  url: '/organizations/lastOrganization',
   method: 'GET',
   handler: async (req, res) => {
-    const code = await getLastCode();
-    res.writeHead(200);
-    res.end(code);
+    const organization = await getLastOrganization();
+    res
+      .setHeader('Content-Type', 'application/json')
+      .writeHead(200)
+      .end(JSON.stringify(organization));
   }
 };
 
@@ -22,8 +24,9 @@ const setIsNewUsrInfoRoute = {
       resBody = 'MISSING_PARAMETER';
     }
     await setIsNewUsrInfo(code);
-    res.writeHead(statusCode);
-    res.end(resBody);
+    res
+      .writeHead(statusCode)
+      .end(resBody);
   }
 };
 
@@ -32,10 +35,11 @@ const getOrganizationRoute = {
   method: 'GET',
   handler: async (req, res) => {
     const organization = await getOrganization(req.params.code);
-    res.setHeader('Content-Type', 'application/json');
-    res.writeHead(200);
-    res.end(JSON.stringify(organization));
+    res
+      .setHeader('Content-Type', 'application/json')
+      .writeHead(200)
+      .end(JSON.stringify(organization));
   }
 };
 
-export default [getLastCodeRoute, setIsNewUsrInfoRoute, getOrganizationRoute];
+export default [getLastOrganizationRoute, setIsNewUsrInfoRoute, getOrganizationRoute];
