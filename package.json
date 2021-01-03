@@ -1,0 +1,30 @@
+{
+  "name": "ufop-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "db:migrate": "npx -n '-r dotenv/config' knex --esm migrate:latest",
+    "db:rollback": "node -r dotenv/config --esm migrate:down",
+    "serve": "nodemon -r dotenv/config"
+  },
+  "engines": {
+    "node": "15.5.0",
+    "npm": "7.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "path-to-regexp": "^6.2.0",
+    "pg": "^8.5.1"
+  }
+}
