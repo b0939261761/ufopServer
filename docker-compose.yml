@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  server:
+  ufopServer:
     image: node:15.5.0
     command: >
       bash -c "
@@ -13,9 +13,9 @@ services:
       - ./:/app
     env_file: .env
     depends_on:
-      - db
+      - ufopServerDB
 
-  db:
+  ufopServerDB:
     image: postgres:13.1-alpine
     ports:
       - $DB_PORT:5432
@@ -28,3 +28,8 @@ services:
 
 volumes:
   db:
+
+networks:
+  default:
+    external: true
+    name: ufop

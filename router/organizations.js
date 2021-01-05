@@ -6,8 +6,7 @@ const getLastOrganizationRoute = {
   handler: async (req, res) => {
     const organization = await getLastOrganization();
     res
-      .setHeader('Content-Type', 'application/json')
-      .writeHead(200)
+      .writeHead(200, { 'Content-Type': 'application/json' })
       .end(JSON.stringify(organization));
   }
 };
@@ -36,8 +35,7 @@ const getOrganizationRoute = {
   handler: async (req, res) => {
     const organization = await getOrganization(req.params.code);
     res
-      .setHeader('Content-Type', 'application/json')
-      .writeHead(200)
+      .writeHead(200, { 'Content-Type': 'application/json' })
       .end(JSON.stringify(organization));
   }
 };

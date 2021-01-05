@@ -35,3 +35,10 @@ WantedBy=multi-user.target
 sudo systemctl enable ufopServer
 sudo systemctl start ufopServer
 ```
+
+## Docker
+
+```bash
+# Create network for ufopParser and usrInfo
+docker network create ufopServer
+```

@@ -12,7 +12,10 @@ export const getOrganization = async code => {
 };
 
 export const getLastOrganization = async () => {
-  const sql = 'SELECT code, activity, status FROM "Organizations" WHERE "isNewUsrInfo" ORDER BY "createdAt" LIMIT 1';
+  const sql = `
+    SELECT code, address, activity, status
+    FROM "Organizations" WHERE "isNewUsrInfo" ORDER BY "createdAt" LIMIT 1
+  `;
   const { rows } = await query(sql);
   return rows[0];
 };
