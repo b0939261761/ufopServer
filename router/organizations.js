@@ -1,7 +1,7 @@
-import { getLastOrganization, setIsNewUsrInfo, getOrganization } from '../db/index.js';
+import { getLastOrganization, setIsNewUsrInfoOrganization, getOrganization } from '../db/index.js';
 
 const getLastOrganizationRoute = {
-  url: '/organizations/lastOrganization',
+  url: '/organizations/last',
   method: 'GET',
   handler: async (req, res) => {
     const organization = await getLastOrganization();
@@ -11,21 +11,13 @@ const getLastOrganizationRoute = {
   }
 };
 
-const setIsNewUsrInfoRoute = {
+const setIsNewUsrInfoOrganizationRoute = {
   url: '/organizations/isNewUsrInfo',
   method: 'POST',
   handler: async (req, res) => {
-    const code = req.body?.code;
-    let statusCode = 204;
-    let resBody;
-    if (!code) {
-      statusCode = 400;
-      resBody = 'MISSING_PARAMETER';
-    }
-    await setIsNewUsrInfo(code);
-    res
-      .writeHead(statusCode)
-      .end(resBody);
+    const code = req.body.code?.trim() ?? '';
+    await setIsNewUsrInfoOrganization(code);
+    res.writeHead(204).end();
   }
 };
 
@@ -40,4 +32,4 @@ const getOrganizationRoute = {
   }
 };
 
-export default [getLastOrganizationRoute, setIsNewUsrInfoRoute, getOrganizationRoute];
+export default [getLastOrganizationRoute, setIsNewUsrInfoOrganizationRoute, getOrganizationRoute];

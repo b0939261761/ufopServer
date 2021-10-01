@@ -1,16 +1,21 @@
 import { connect } from './db.js';
-import { getOrganization, getLastOrganization, setIsNewUsrInfo } from './organizations.js';
+import { getOrganization, getLastOrganization, setIsNewUsrInfoOrganization } from './organizations.js';
+import { getLastPerson, setIsNewUsrInfoPerson } from './persons.js';
 
 export {
   connect,
   getOrganization,
   getLastOrganization,
-  setIsNewUsrInfo
+  setIsNewUsrInfoOrganization,
+  getLastPerson,
+  setIsNewUsrInfoPerson
 };
 
 export default {
   connect,
   getOrganization,
   getLastOrganization,
-  setIsNewUsrInfo
+  setIsNewUsrInfoOrganization,
+  getLastPerson,
+  setIsNewUsrInfoPerson
 };

@@ -1,10 +1,12 @@
 import pathToRegexp from 'path-to-regexp';
 import organizations from './organizations.js';
+import persons from './persons.js';
 
 //= ============================================================================
 
 const router = [
-  ...organizations
+  ...organizations,
+  ...persons
 ];
 
 export default (url, method) => {

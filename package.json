@@ -5,13 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "db:migrate": "npx -n '-r dotenv/config' knex --esm migrate:latest",
-    "db:rollback": "node -r dotenv/config --esm migrate:down",
-    "serve": "nodemon -r dotenv/config"
+    "serve": "node -r dotenv/config index.js dotenv_config_path=.env.development"
   },
   "engines": {
-    "node": "15.5.0",
-    "npm": "7.3.0"
+    "node": "15.6.0",
+    "npm": "7.4.0"
   },
   "keywords": [],
   "author": "",

@@ -8,7 +8,12 @@ const port = process.env.SERVER_PORT;
 //= ============================================================================
 
 const requestListener = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Token')
+
   try {
+    if (req.method === 'OPTIONS') return res.writeHead(204).end();
     if (req.headers.token !== process.env.TOKEN) return res.writeHead(401).end();
 
     const route = getRoute(req.url, req.method);
