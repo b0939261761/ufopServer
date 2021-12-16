@@ -2,7 +2,7 @@ const tableName = 'Persons';
 
 export const up = knex => knex.raw(`
   CREATE TABLE "${tableName}" (
-    id SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     "fullName" VARCHAR(254) NOT NULL DEFAULT ''::character varying,
     address VARCHAR(500) NOT NULL DEFAULT ''::character varying,
     activity VARCHAR(254) NOT NULL DEFAULT ''::character varying,
