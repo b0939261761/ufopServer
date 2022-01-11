@@ -2,7 +2,6 @@ const tableName = 'Organizations';
 
 export const up = knex => knex.raw(`
   CREATE TABLE "${tableName}" (
-    id BIGSERIAL PRIMARY KEY,
     code VARCHAR(10) NOT NULL DEFAULT ''::character varying UNIQUE,
     manager VARCHAR(254) NOT NULL DEFAULT ''::character varying,
     "fullName" VARCHAR(500) NOT NULL DEFAULT ''::character varying,
@@ -19,7 +18,6 @@ export const up = knex => knex.raw(`
   CREATE INDEX "${tableName}_createdAt_idx" ON "${tableName}" ("createdAt") WHERE "isNewUsrInfo";
 
   COMMENT ON TABLE "${tableName}" IS 'Организации';
-  COMMENT ON COLUMN "${tableName}".id IS 'Уникальный идентификатор';
   COMMENT ON COLUMN "${tableName}".code IS 'Ідентифікаційний код юридичної особи';
   COMMENT ON COLUMN "${tableName}"."fullName" IS 'Повне найменування юридичної особи';
   COMMENT ON COLUMN "${tableName}".name IS 'Назва юридичної особи';
